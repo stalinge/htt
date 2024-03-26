@@ -204,8 +204,8 @@ $(document).ready(function () {
       })
       .on('leave', function () {
         scrollMagicEnabled = false;
-        slider.slick('slickSetOption', 'verticalSwiping', false); // Enable vertical swiping
-        console.log("false");
+        // slider.slick('slickSetOption', 'verticalSwiping', false); // Enable vertical swiping
+        // console.log("false");
       })
       .addTo(controller);
   });
