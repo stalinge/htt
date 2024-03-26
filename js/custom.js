@@ -122,6 +122,7 @@ $(document).ready(function () {
       arrows: false,
       fade: true,
       useCSS: true,
+      touch: true,
       cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)'
     })
     .on('afterChange', onSliderAfterChange)
