@@ -139,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
 //       .addTo(controller);
 // });
 
- 
 $(document).ready(function () {
   const slider = $('.slider');
   let scrollMagicEnabled = false;
@@ -149,11 +148,9 @@ $(document).ready(function () {
     if (currentSlide === slick.slideCount - 1) {
       // Disable vertical swiping if last slide is reached
       slider.slick('slickSetOption', 'verticalSwiping', false);
-      console.log("false");
     } else {
       // Enable vertical swiping for all other slides
       slider.slick('slickSetOption', 'verticalSwiping', true);
-      console.log("true");
     }
   }
 
@@ -202,9 +199,13 @@ $(document).ready(function () {
       .setPin(pinElement)
       .on('enter', function () {
         scrollMagicEnabled = true;
+        slider.slick('slickSetOption', 'verticalSwiping', true); // Enable vertical swiping
+        console.log("true");
       })
       .on('leave', function () {
         scrollMagicEnabled = false;
+        slider.slick('slickSetOption', 'verticalSwiping', false); // Enable vertical swiping
+        console.log("false");
       })
       .addTo(controller);
   });
