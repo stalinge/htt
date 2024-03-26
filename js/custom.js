@@ -143,14 +143,21 @@ $(document).ready(function () {
   const slider = $('.slider');
   let scrollMagicEnabled = false;
 
+ 
   function onSliderAfterChange(event, slick, currentSlide) {
     $(event.target).data('current-slide', currentSlide);
-    if (currentSlide === slick.slideCount - 1) {
+    if (currentSlide === 0) {
+      // Disable vertical swiping if first slide is reached
+      slider.slick('slickSetOption', 'verticalSwiping', false);
+      console.log("false");
+    } else if (currentSlide === slick.slideCount - 1) {
       // Disable vertical swiping if last slide is reached
       slider.slick('slickSetOption', 'verticalSwiping', false);
+      console.log("false");
     } else {
       // Enable vertical swiping for all other slides
       slider.slick('slickSetOption', 'verticalSwiping', true);
+      console.log("true");
     }
   }
 
