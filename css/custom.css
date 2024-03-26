@@ -1,0 +1,347 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Crimson Text", serif;
+}
+
+@font-face {
+  font-family: "Crimson Text";
+  src: url('../fonts/CrimsonText-Regular.woff2') format('woff2-variations');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crimson Text';
+  src: url('../fonts/CrimsonText-Bold.woff2') format('woff2-variations');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.image-slice {
+  overflow: hidden;
+  position: relative;
+}
+
+.image-slice .full-page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.image-slice .full-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-slice .text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 80%;
+  z-index: 999;
+}
+
+.image-slice .text-overlay {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 80%;
+  z-index: 999;
+}
+
+@keyframes slideIn {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+ 
+.image-slice .text-overlay  {
+  animation: slideIn 1s ease-in-out;
+  animation-fill-mode: forwards; 
+}
+ 
+
+.image-slice .text-overlay h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 76px;
+  font-weight: 500;
+}
+
+.image-slice .text-overlay h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 52px;
+  font-weight: 500;
+}
+
+.image-slice .text-overlay p {
+  margin: 0;
+}
+
+.image-slice .full-text-page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  padding: 50px;
+  display: inline-flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.image-slice .full-text-page h5 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.image-slice .full-text-page h4 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.image-slice .full-text-page p {
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.image-slice .full-text-page .full-text-page-content {
+  padding: 67px;
+}
+
+
+.image-slice .split-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  transition: clip-path 0.5s ease;
+}
+
+.image-slice .vert-slide {
+  height: 100%;
+  width: 100%;
+}
+
+.image-slice .slick-active.vert-slide.splitting.cells {
+  background-color: #000;
+  visibility: visible;
+}
+
+.image-slice .slick-active.vert-slide.splitting .cell,
+.image-slice .slick-active.vert-slide.splitting .cell__inner,
+.image-slice .slick-active.vert-slide.splitting img {
+  transition: transform 1s cubic-bezier(0.63, 0.01, 0.07, 0.99), opacity 1s linear;
+  transition-delay: calc(0.1s * var(--cell-index));
+  transition-delay: calc(0.1s * (var(--cell-total) - var(--cell-index)));
+}
+
+
+.image-slice .splitting img {
+  transform: scale(0.8);
+  transition-delay: 0s;
+  visibility: visible;
+  opacity: 1;
+}
+
+.image-slice .slick-active.vert-slide.splitting .cell,
+.image-slice .slick-active.vert-slide.splitting .cell__inner {
+  transition-delay: calc(0.1s * var(--cell-index));
+}
+
+.image-slice .slick-active.vert-slide .cell {
+  transform: translateY(100%);
+}
+
+.image-slice .slick-active.vert-slide.\-fixed .cell__inner {
+  transform: translateY(-100%);
+}
+
+
+/* slick slider css*/
+.slideshow {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slideshow .slider {
+  width: 100vw;
+  height: 100vw;
+  z-index: 2;
+}
+
+.slideshow .slider * {
+  outline: none;
+}
+
+.slideshow .slider .item {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.slideshow .slider .item .text {
+  display: none;
+}
+
+.slideshow .slider .item img {
+  min-width: 101%;
+  min-height: 101%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slideshow .slick-dots {
+  position: fixed;
+  z-index: 100;
+  width: 40px;
+  height: auto;
+  bottom: auto;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  left: auto;
+  color: #fff;
+  display: block;
+}
+
+.slideshow .slick-dots li {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.slideshow .slick-dots li button {
+  position: relative;
+  width: 20px;
+  height: 15px;
+  text-align: center;
+}
+
+.slideshow .slick-dots li button:before {
+  content: "";
+  background: #fff;
+  color: #fff;
+  height: 2px;
+  width: 20px;
+  border-radius: 0;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: auto;
+  transform: translateY(-50%);
+  transition: all 0.3s ease-in-out;
+  opacity: 0.6;
+}
+
+.slideshow .slick-dots li.slick-active button:before {
+  width: 40px;
+  opacity: 1;
+}
+
+.slideshow.slideshow-right {
+  left: 0;
+  z-index: 1;
+  width: 50vw;
+  pointer-events: none;
+}
+
+.slideshow.slideshow-right .slider {
+  left: 0;
+  position: absolute;
+}
+ 
+.reveal {
+  opacity: 0;
+  -webkit-transform: translate(-50%, 0%);
+  -moz-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  -o-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -20%);
+  -moz-transform: translate(-50%, -20%);
+  -ms-transform: translate(-50%, -20%);
+  -o-transform: translate(-50%, -20%);
+  transform: translate(-50%, -20%);
+}
+
+.textreveal {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+     -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+       -o-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: all 1s ease-in-out;
+     -moz-transition: all 1s ease-in-out;
+      -ms-transition: all 1s ease-in-out;
+       -o-transition: all 1s ease-in-out;
+          transition: all 1s ease-in-out;
+}
+.textreveal.visible {
+  opacity: 1;
+  -webkit-transform: none;
+     -moz-transform: none;
+      -ms-transform: none;
+       -o-transform: none;
+          transform: none;
+}
+
+
+@media(max-width:991px) {
+  .image-slice .text-overlay h1 {
+    font-size: 32px !important;
+  }
+
+  .image-slice .text-overlay h2 {
+    font-size: 27px !important;
+  }
+
+  .image-slice .full-text-page h4 {
+    font-size: 23px !important;
+  }
+
+  .image-slice .full-text-page h5 {
+    font-size: 22px !important;
+  }
+
+  .image-slice .full-text-page p {
+    font-size: 16px !important;
+  }
+
+  .image-slice .full-text-page .full-text-page-content {
+    padding: 0px;
+  }
+}
