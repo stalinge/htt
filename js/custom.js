@@ -180,7 +180,6 @@ $(document).ready(function () {
 
   const controller = new ScrollMagic.Controller();
 
-  // Set up ScrollMagic scenes for each section
   document.querySelectorAll('.section-image').forEach(function (sectionimage, index) {
     var triggerElement = sectionimage.querySelector('.image-tigger');
     var pinElement = sectionimage.querySelector('.image-tigger-pin');
@@ -189,11 +188,12 @@ $(document).ready(function () {
       triggerElement: triggerElement,
       triggerHook: 0,
       duration: "100%",
-      offset: 0 
+      offset: 0
     })
       .setPin(pinElement)
       .on('enter', function () {
         scrollMagicEnabled = true;
+        slider.slick('slickSetOption', 'verticalSwiping', true); // Enable vertical swiping
       })
       .on('leave', function () {
         scrollMagicEnabled = false;
@@ -201,7 +201,6 @@ $(document).ready(function () {
       .addTo(controller);
   });
 
-  // Initialize Slick slider
   slider.each(function (index, element) {
     var $element = $(element);
     $element.data('slider-length', $element.children().length);
@@ -214,21 +213,21 @@ $(document).ready(function () {
       arrows: false,
       fade: true,
       useCSS: true,
-      verticalSwiping: true,
+      verticalSwiping: false, // Initially set to false
       cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)'
     })
     .on('afterChange', onSliderAfterChange)
     .on('wheel', onSliderWheel);
 
-  // Add ScrollMagic scene for resetting slider when scrolling to top
   new ScrollMagic.Scene({
     triggerElement: 'body',
     triggerHook: 'onLeave',
-    duration: 1 
+    duration: 1
   })
     .on('enter', function () {
       // Reset Slick Slider when scroll reaches the top
       slider.slick('slickGoTo', 0);
+      slider.slick('slickSetOption', 'verticalSwiping', false); // Disable vertical swiping after all slides end
     })
     .addTo(controller);
 });
