@@ -122,7 +122,15 @@ $(document).ready(function () {
       arrows: false,
       fade: true,
       useCSS: true,
-      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)'
+      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            autoplay: true
+          }
+        } ],
     })
     .on('afterChange', onSliderAfterChange)
     .on('wheel', onSliderWheel);
